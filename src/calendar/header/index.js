@@ -118,14 +118,24 @@ class CalendarHeader extends Component {
     if (this.props.showIndicator) {
       indicator = <ActivityIndicator />;
     }
+
     return (
       <View>
         <View style={this.style.header}>
           {leftArrow}
           <View style={{ flexDirection: 'row' }}>
-            <Text allowFontScaling={false} style={this.style.monthText} accessibilityTraits='header'>
-              {this.props.month.toString(this.props.monthFormat)}
-            </Text>
+            <View style={{ flexDirection: 'column' }}>
+              <Text allowFontScaling={false} style={this.style.monthText} accessibilityTraits='header'>
+                {this.props.month.toString(this.props.monthFormat)}
+              </Text>
+
+              {this.props.yearFormat && (
+                <Text allowFontScaling={false} style={this.style.yearText} accessibilityTraits='header'>
+                  {this.props.month.toString(this.props.yearFormat)}
+                </Text>
+              )}
+            </View>
+
             {indicator}
           </View>
           {rightArrow}
