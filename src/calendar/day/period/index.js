@@ -65,7 +65,10 @@ class Day extends Component {
     } else if (marking.selected) {
       defaultStyle.textStyle.color = this.theme.selectedDayTextColor;
     }
-    const resultStyle = ([marking]).reduce((prev, next) => {
+
+    defaultStyle.fillerColor = marking.fillerColor || null
+
+    return ([marking]).reduce((prev, next) => {
       if (next.quickAction) {
         if (next.first || next.last) {
           prev.containerStyle = this.style.firstQuickAction;
@@ -109,7 +112,6 @@ class Day extends Component {
       }
       return prev;
     }, defaultStyle);
-    return resultStyle;
   }
 
   render() {
